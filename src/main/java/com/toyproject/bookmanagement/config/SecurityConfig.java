@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.httpBasic().disable();
 		http.formLogin().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
 		http.authorizeRequests()
 			.antMatchers("/auth/**") // "/auth/**" 로 시작하는 것은 허용
 			.permitAll()

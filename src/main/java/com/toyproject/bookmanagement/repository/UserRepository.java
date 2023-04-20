@@ -1,7 +1,5 @@
 package com.toyproject.bookmanagement.repository;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.toyproject.bookmanagement.entity.Authority;
@@ -12,5 +10,5 @@ public interface UserRepository {
 	
 	public User findUserByEmail(String email);
 	public int saveUser(User user);
-	public void addAuthorities(List<Authority> authority);
+	public int saveAuthority(Authority authority);
 }
