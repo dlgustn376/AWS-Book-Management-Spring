@@ -85,6 +85,10 @@ public class AuthenticationService implements UserDetailsService{
 		return userEntity.toPrincipal();
 	}
 	
+	// 클라이언트에서 보내는 accessToken을 서버에서 비교하기 위해 사용
+	public boolean authenticated(String accessToken) {
+		return jwtTokenProvider.validateToken(jwtTokenProvider.getToken(accessToken));
+	}
 	
 	
 	
