@@ -13,6 +13,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		registry.addMapping("/**")
 				.allowedMethods("*")
 				.allowedOrigins("*"); //테스트 할 경우만 사용.
+//				.allowedHeaders("Content-Type", "Authorization");
 //		.allowedOrigins("http://localhost:3000");
 	}
 }

@@ -1,14 +1,21 @@
 package com.toyproject.bookmanagement.security;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.toyproject.bookmanagement.dto.auth.JwtRespDto;
+import com.toyproject.bookmanagement.exception.CustomException;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -103,7 +110,29 @@ public class JwtTokenProvider {
 				.getBody();				// 정보를 꺼내 옴(권한, email)
 	}
 	
-	
+	public Authentication getAuthentication(String accessToken) {
+		Authentication authentication = null;
+		
+		Claims claims = getClaims(accessToken);
+		if(claims.get("auth") == null) {
+			throw new CustomException("AccessToken에  권한 정보가 없습니다.");
+		}
+		
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		
+		String auth = claims.get("auth").toString();
+		for(String role : auth.split(",")) {
+			authorities.add(new SimpleGrantedAuthority(role));
+		} 
+		
+		/* 매개변수 : username, password, authorities */
+		UserDetails userDetails = new User(claims.getSubject(), "", authorities);
+		
+		/* 매개변수 : principal, credentials, authorities */
+		authentication = new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
+		
+		return authentication;
+	}
 }
 
 
