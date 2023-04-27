@@ -138,12 +138,12 @@
             
     </select>
    
-    <insert id="setLike">
+    <insert id="setLike" parameterType="hashMap">
          INSERT INTO book_like_tb 
          VALUES (0, #{bookId}, #{userId});
     </insert>
     
-    <delete id="disLike">
+    <delete id="disLike" parameterType="hashMap">
         delete
         from
             book_like_tb
@@ -166,12 +166,12 @@
             bt.book_id = #{bookId}
     </select>
     
-    <insert id="rentalBook">
+    <insert id="rentalBook" parameterType="hashMap">
         insert into book_rental_tb 
         values (0,#{bookListId},#{userId});
     </insert>
     
-    <delete id="returnBook">
+    <delete id="returnBook" parameterType="hashMap">
         delete
         from
             book_rental_tb

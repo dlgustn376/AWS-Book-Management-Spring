@@ -68,7 +68,7 @@ public class BookService {
 	public int getLikeCount(int bookId) {
 		return bookRepository.getLikeCount(bookId);
 	}
-	
+	// 좋아요 상태
 	public int getLikeStatus(int bookId, int userId) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("bookId", bookId);
@@ -76,7 +76,7 @@ public class BookService {
 		
 		return bookRepository.getLikeStatus(map);
 	}
-	
+	// 좋아요 등록
 	public int setLike(int bookId, int userId) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("bookId", bookId);
@@ -84,7 +84,7 @@ public class BookService {
 		
 		return bookRepository.setLike(map);
 	}
-	
+	// 좋아요 최소
 	public int disLike(int bookId, int userId) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("bookId", bookId);
@@ -102,7 +102,7 @@ public class BookService {
 		
 		return list;
 	}
-	
+	//대여 서비스
 	public int rentalBook(int bookListId, int userId) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("bookListId", bookListId);
@@ -110,7 +110,7 @@ public class BookService {
 		
 		return bookRepository.rentalBook(map);
 	}
-	
+	//반납 서비스
 	public int returnBook(int bookListId, int userId) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("bookListId", bookListId);

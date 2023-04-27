@@ -67,8 +67,10 @@ public class BookController {
 	public ResponseEntity<?> rentalBook(@PathVariable int bookListId, @RequestBody Map<String, Integer> requsetMap){
 		return ResponseEntity.ok().body(bookService.rentalBook(bookListId, requsetMap.get("userId")));
 	}
+	
 	@DeleteMapping("/book/rental/{bookListId}")
 	public ResponseEntity<?> returnBook(@PathVariable int bookListId, int userId){
 		return ResponseEntity.ok().body(bookService.returnBook(bookListId, userId));
 	}
+	
 }
