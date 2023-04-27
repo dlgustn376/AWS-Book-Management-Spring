@@ -8,5 +8,6 @@ import lombok.Data;
 public class RentalListRespDto {
 	private int bookListId;
 	private String bookName;
+	private int userId;
 	private boolean rentalStatus;
 }

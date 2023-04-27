@@ -166,4 +166,17 @@
             bt.book_id = #{bookId}
     </select>
     
+    <insert id="rentalBook">
+        insert into book_rental_tb 
+        values (0,#{bookListId},#{userId});
+    </insert>
+    
+    <delete id="returnBook">
+        delete
+        from
+            book_rental_tb
+        where
+            book_list_id = #{bookListId}
+        and user_id = #{userId}
+    </delete>
 </mapper>

@@ -18,6 +18,7 @@ public class RentalList {
 		return RentalListRespDto.builder()
 				.bookListId(bookListId)
 				.bookName(bookName)
+				.userId(userId)
 				.rentalStatus(userId == 0)
 				.build();
 	}
