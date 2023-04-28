@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/auth/**") // "/auth/**" 로 시작하는 것은 허용
 			.permitAll()
+			.antMatchers("/admin/**")
+			.hasRole("ADMIN")
 			.anyRequest()
 			.authenticated()		// 모든 요청에는 인증을 거쳐야 함.
 			.and()

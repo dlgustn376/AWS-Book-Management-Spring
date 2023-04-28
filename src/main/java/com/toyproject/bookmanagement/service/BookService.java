@@ -119,4 +119,12 @@ public class BookService {
 		return bookRepository.returnBook(map);
 	}
 	
+	// 관리자 책 등록 기능
+	public int registerBookList(int bookId) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("bookId", bookId);
+		
+		return bookRepository.registerBookList(bookId);
+	}
+	
 }
